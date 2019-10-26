@@ -1,14 +1,14 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { compose, withState } from 'recompose'
+import { compose } from 'recompose'
 import { Layout, Menu, Input } from 'antd'
 import { Link } from 'react-router-dom'
 
 import '../../assets/styles/header.css'
 import logo from '../../assets/images/logo.png'
 
-const Header = ({defaultSelectedKey}) => {
+const Header = ({tabIndex}) => {
     return (
         <Layout.Header className="header">
             <a href="/" className="logo">
@@ -17,9 +17,9 @@ const Header = ({defaultSelectedKey}) => {
             <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={defaultSelectedKey}
+                defaultSelectedKeys={"1"}
                 className="menu-wrapper"
-                selectedKeys={"2"}
+                selectedKeys={tabIndex}
             >
                 <Menu.Item key={"1"}><Link to="/">商品浏览</Link></Menu.Item>
                 <Menu.Item key="2"><Link to="/cart">购物车</Link></Menu.Item>
@@ -34,24 +34,25 @@ const Header = ({defaultSelectedKey}) => {
     )
 }
 
-const LinkHeader = (props) => {
-    let defaultSelectedKey = "1"
-    switch (props.location.pathname) {
+const LinkHeader = ({ location, tabIndex }) => {
+    switch (location.pathname) {
         case "/":
-                defaultSelectedKey = "1"
+                tabIndex = "1"
                 break;
         case "/cart":
-                defaultSelectedKey = "2"
+                tabIndex = "2"
                 break;
         case "/order":
-                defaultSelectedKey = "3"
+                tabIndex = "3"
                 break;
+        default: 
+            tabIndex = "1"
     }
-    return <Header defaultSelectedKey={defaultSelectedKey} />
+    return <Header tabIndex={tabIndex} />
 }
 export default compose(
     connect(store => ({
-        tabIndex: store.tabIndex
+        tabIndex: store.cart.tabIndex
     })),
     withRouter
 )(LinkHeader)

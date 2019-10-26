@@ -7,7 +7,7 @@ import Title from '../../components/title'
 const Commodity = () => {
     return (
         <>
-            <Carousel />
+            {/* <Carousel /> */}
             <Title>商品列表</Title>
             <Products />
         </>

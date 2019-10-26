@@ -1,6 +1,6 @@
 
 const initState = {
-    tabIndex: 1, // 存放当前导航
+    tabIndex: "1", // 存放当前导航
     cartProducts:[], //存放购物车的数据 (id,index,count)
     selectedProducts: [], // 存放选中的商品
     historyOrder: [], // 存放历史订单 (id,index,count)
@@ -181,7 +181,8 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
                 }
                 return {
                     ...state,
-                    cartProducts: newCartProducts
+                    cartProducts: newCartProducts,
+                    selectedProducts: [] // 添加新商品后清空选择列表
                 }
             }
         /*
@@ -255,9 +256,11 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
 
             // 删除购物车中已经购买的商品
             const newCartProducts = []
+            cartHasIndex.splice(0)
             state.cartProducts.forEach((item,index) => {
                 if(!state.selectedProducts.includes(index)) {
                     newCartProducts.push(item)
+                    cartHasIndex.push(index)
                 }
             })
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, InputNumber, Button, Typography, notification, Icon, message } from 'antd'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { compose, withHandlers } from 'recompose'
+import { compose, withHandlers, withState } from 'recompose'
 
 import { countChange, deleteProduct, selectProduct, settleAccounts } from '../../store/cartStore'
 
@@ -67,7 +67,9 @@ const DeleteButton = compose(
   })
 )(DeleteButtonTemp)
 
-const CartProduct = ({cartProducts=[], allCount=0, rowSelection={}, handleSettleClick, ...props}) => {
+
+// 购物车总页面
+const CartProduct = ({cartProducts=[], allCount=0, rowSelection={}, handleSettleClick, isSettle, ...props}) => {
     return (
         <div className="cart">
           <Table rowSelection={rowSelection} columns={columns} dataSource={cartProducts} locale={{emptyText:'购物车是空的，快去选购吧！'}} />
@@ -75,7 +77,7 @@ const CartProduct = ({cartProducts=[], allCount=0, rowSelection={}, handleSettle
             <Title level={4} className="all-count">
               总价：<Text type="warning" className="money">{allCount}</Text> 元
             </Title>
-            <Button type="primary" shape="round" icon="shop" className="settle-btn" onClick={handleSettleClick}>结算</Button>
+            <Button type="primary" loading={isSettle} shape="round" icon="shop" className="settle-btn" onClick={handleSettleClick}>结算</Button>
           </div>
         </div>
     )
@@ -137,12 +139,14 @@ export default compose(
     }
   }),
   withRouter,
+  withState('isSettle', "setIsSettle", false),
   withHandlers({
-    handleSettleClick: ({allCount, settleAccounts, history}) => () => {
+    handleSettleClick: ({allCount, settleAccounts, history, setIsSettle}) => () => {
       // 判断价格
       if(allCount > 0) {
         // 如果价格不为0 结算
         settleAccounts(allCount)
+        setIsSettle(true)
         notification.open({
           message: '结算成功',
           duration: 2,

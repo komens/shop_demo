@@ -1,9 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { compose, withHandlers, withState } from 'recompose'
+import Title from '../../components/title'
 
-const Order = () => {
+const Order = (props) => {
+    console.log(props)
     return (
-        <h1>Order</h1>
+        <>
+            <Title>订单列表</Title>
+        </>
     )
 }
 
-export default Order
+export default connect(
+    store => ({
+        orderList: store.cart.historyOrder
+    })
+)(Order)
