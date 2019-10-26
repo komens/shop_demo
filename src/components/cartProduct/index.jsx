@@ -104,7 +104,7 @@ export default compose(
         ({id, index, count}, cartIndex) => {
           return {
             // key: id, 这里不用id是为了后面号取索引(用于默认选中项)
-            key: index,
+            key: cartIndex,
             image: products[index].image,
             desc: products[index].desc,
             price: products[index].price,
@@ -116,7 +116,7 @@ export default compose(
     // 表格勾选函数
     const rowSelection = {
       hideDefaultSelections: true,
-      // selectedRowKeys: [...selectedProducts], // 此处设置默认选择项
+      selectedRowKeys: [...selectedProducts], // 此处设置默认选择项
       onChange: (selectedRowKeys, selectedRows) => {
         const selectArr = selectedRows.map(item => {
           return item.delete
