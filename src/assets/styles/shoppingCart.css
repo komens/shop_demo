@@ -1,0 +1,16 @@
+.settle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    padding: 15px;
+}
+.settle .all-count {
+    margin: 0;
+}
+.settle .all-count .money {
+    font-size: 1.8em;
+}
+.settle .settle-btn {
+    margin: 0 15px;
+}
