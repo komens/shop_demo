@@ -1,3 +1,7 @@
+.cart {
+    width: 90%;
+    margin:  0 auto;
+}
 .settle {
     display: flex;
     justify-content: flex-end;
