@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 这是一个采用react/react-redux/react-router-dom/antd-ui为基础搭建的纯前端购物小demo
 
-### [https://komens.github.io](演示地址)
+### [演示地址](https://komens.github.io)
 
 ### 怎么运行?
 1. 下载项目 `git clone https://github.com/komens/shop_demo.git`
