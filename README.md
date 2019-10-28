@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### 怎么运行?
 1.下载项目 `git clone `
+
 2.安装依赖 `npm install`
+
 3.运行项目 `npm start`
+
 4.浏览器访问 [http://localhost:3000](http://localhost:3000)
