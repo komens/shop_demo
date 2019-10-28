@@ -1,6 +1,6 @@
 import React from 'react'
 import { compose, withState, withHandlers } from 'recompose'
-import { Card, InputNumber, Button  } from 'antd';
+import { Card, InputNumber, Button, message  } from 'antd';
 
 const { Meta } = Card;
 
@@ -32,8 +32,9 @@ export default compose(
     withState('count','changeCount',1),
     withHandlers({
         handleCartClick: (props) => () => {
-            const { index, count, onClick } = props
+            const { index, count, onClick, product } = props
             onClick(index, count)
+            message.success(`${count}件商品『${product.name}』已成功加入购物车!`,1)
         }
     })
 )(ProductWrap)

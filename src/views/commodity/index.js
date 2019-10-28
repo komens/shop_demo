@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Carousel from '../../components/carousel'
+// import Carousel from '../../components/carousel'
 import Products from '../../components/product'
 import Title from '../../components/title'
 

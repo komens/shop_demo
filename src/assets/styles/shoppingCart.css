@@ -18,3 +18,9 @@
 .settle .settle-btn {
     margin: 0 15px;
 }
+
+.product-image {
+    width: 40%;
+    border: 2px solid #E4B653;
+    border-radius: 4px;
+}

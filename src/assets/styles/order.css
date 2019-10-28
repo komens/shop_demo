@@ -55,16 +55,27 @@
     font-size: 1.5em;
 }
 
+/*
+    商品展示
+*/
 .order-table .image-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .order-table .image-wrap img {
+    width: 25%;
     border: 2px solid #E4B653;
     border-radius: 4px;
 }
-.order-table .image-wrap span {
+.order-table .image-wrap .product-name {
+    flex-basis: 100px;
+    margin-left: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+.order-table .image-wrap .product-name span {
     color: #E4B653;
-    padding-left: 15px;
 }

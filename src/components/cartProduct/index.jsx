@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, InputNumber, Button, Typography, notification, Icon, message } from 'antd'
+import { Table, InputNumber, Button, Typography, notification, Icon, message, Spin, Popconfirm } from 'antd'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose, withHandlers, withState } from 'recompose'
@@ -11,10 +11,11 @@ const columns = [
     {
       title: '商品名称',
       dataIndex: 'image',
-      render: src => <img src={src} alt="" />,
+      render: src => <img src={src} className="product-image" alt="" />,
     }, {
       title: '商品描述',
       dataIndex: 'desc',
+      render: desc => <span dangerouslySetInnerHTML={{__html: desc}}></span>
     }, {
       title: '单价',
       dataIndex: 'price',
@@ -51,7 +52,7 @@ const NumberInput = compose(
 
 // 表格删除按钮
 const DeleteButtonTemp = ({handleDelete}) => {
-  return <Button type="link" onClick={handleDelete}>删除</Button>
+  return <Popconfirm title="你确定要移除该商品吗?" okText="确定" cancelText="取消" onConfirm={handleDelete}><Button type="link">删除</Button></Popconfirm>
 }
 const DeleteButton = compose(
   connect(
@@ -71,7 +72,7 @@ const DeleteButton = compose(
 // 购物车总页面
 const CartProduct = ({cartProducts=[], allCount=0, rowSelection={}, handleSettleClick, isSettle, ...props}) => {
     return (
-        <div className="cart">
+        <Spin wrapperClassName="cart" spinning={isSettle} tip="正在处理，请稍后...">
           <Table rowSelection={rowSelection} columns={columns} dataSource={cartProducts} locale={{emptyText:'购物车是空的，快去选购吧！'}} />
           <div className="settle">
             <Title level={4} className="all-count">
@@ -79,7 +80,7 @@ const CartProduct = ({cartProducts=[], allCount=0, rowSelection={}, handleSettle
             </Title>
             <Button type="primary" loading={isSettle} shape="round" icon="shop" className="settle-btn" onClick={handleSettleClick}>结算</Button>
           </div>
-        </div>
+        </Spin>
     )
 }
 
@@ -149,7 +150,7 @@ export default compose(
         setIsSettle(true)
         notification.open({
           message: '结算成功',
-          duration: 2,
+          duration: 1.5,
           description:
             `感谢您光临小店，您一共消费${allCount}元，即将为您跳转订单页面。。。`,
           icon: <Icon type="smile" style={{ color: '#108ee9' }} />,

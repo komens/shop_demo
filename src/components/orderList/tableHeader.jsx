@@ -1,7 +1,6 @@
 import React from 'react'
 
 const TableHeader = ({order}) => {
-    console.log(order)
     return (
         <div className="table-header">
             <h5>订单编号：{order.id}</h5>

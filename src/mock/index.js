@@ -9,91 +9,91 @@ export const products = [ // 存放商品数据
         id: 's0002',
         name: '匕首',
         image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
+        price: 290,
         desc: "+10%攻击速度"
     }, {
         id: 's0003',
         name: '搏击拳套',
         image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1113.jpg',
-        price: 250,
+        price: 320,
         desc: "+8%暴击"
     }, {
         id: 's0004',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '吸血之镰',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1114.jpg',
+        price: 410,
+        desc: "+10%物理攻击<br>+8%物理吸血"
     }, {
         id: 's0005',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '雷鸣刃',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1116.jpg',
+        price: 450,
+        desc: "+40物理攻击"
     }, {
         id: 's0006',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '冲能拳套',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1117.jpg',
+        price: 550,
+        desc: "+15%暴击率"
     }, {
         id: 's0007',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '风暴巨剑',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1121.jpg',
+        price: 910,
+        desc: "+80物理攻击"
     }, {
         id: 's0008',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '日冕',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1122.jpg',
+        price: 790,
+        desc: "+40物理攻击<br>+300最大生命"
     }, {
         id: 's0009',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '狂暴双刃',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1123.jpg',
+        price: 890,
+        desc: "+15%攻击速度<br>+10%暴击率<br>+5%移速"
     }, {
         id: 's0010',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '陨星',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1124.jpg',
+        price: 1080,
+        desc: "+45物理攻击<br>+10%冷却缩减"
     }, {
         id: 's0011',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '碎星锤',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1131.jpg',
+        price: 2100,
+        desc: "+80物理攻击<br>+10%冷却缩减"
     }, {
         id: 's0012',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '末世',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1126.jpg',
+        price: 2160,
+        desc: "+60物理攻击<br>+30%攻击速度<br>+10%物理吸血"
     }, {
         id: 's0013',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '名刀·司命',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1127.jpg',
+        price: 1900,
+        desc: "+60物理攻击<br>+5%冷却缩减"
     }, {
         id: 's0014',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '冰霜长矛',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1128.jpg',
+        price: 1980,
+        desc: "+80物理攻击<br>+600最大生命<br>+15%攻击速度"
     }, {
         id: 's00015',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '速击之枪',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1129.jpg',
+        price: 890,
+        desc: "+25%攻击速度"
     }, {
         id: 's0016',
-        name: '匕首',
-        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/1112.jpg',
-        price: 250,
-        desc: "+10%攻击速度"
+        name: '制裁之刃',
+        image: '//game.gtimg.cn/images/yxzj/img201606/itemimg/11210.jpg',
+        price: 1800,
+        desc: "+100物理攻击<br>+10%物理吸血"
     }
 ]

@@ -1,12 +1,13 @@
 import {products} from "../mock";
 import {uniqueKey} from "../utils/uniqueKey"
 import {filterDate} from "../utils/filterDate"
+import { getData, saveData } from "../utils/saveData"
 
 const initState = {
     tabIndex: "1", // 存放当前导航
-    cartProducts: [], //存放购物车的数据 (id,index,count)
+    cartProducts: getData('cart') || [], //存放购物车的数据 (id,index,count)
     selectedProducts: [], // 存放选中的商品
-    historyOrder: [], // 存放历史订单 (id,index,count)
+    historyOrder: getData('order') || [], // 存放历史订单 (id,index,count)
     products: products
 }
 
@@ -56,7 +57,6 @@ export const selectProduct = (selectArr) => {
 
 // 结算商品
 export const settleAccounts = (price) => {
-    console.log(price)
     return {
         type: SETTLE_ACCOUNTS,
         count: price
@@ -85,6 +85,7 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
                 })
                 cartHasIndex.push(index) //更新标记数组
             }
+            saveData('cart', newCartProducts);
             return {
                 ...state,
                 cartProducts: newCartProducts,
@@ -99,6 +100,7 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
             product.count = count
             const newCartProducts = [].concat(cartProducts)
             newCartProducts.splice(index, 1, product)
+            saveData('cart', newCartProducts);
             return {
                 ...state,
                 cartProducts: newCartProducts
@@ -110,6 +112,7 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
         case DELET_PRODUCT: {
             const newCartProducts = [...cartProducts]
             newCartProducts.splice(index, 1)
+            saveData('cart', newCartProducts);
             // 声明一个新数组用于存储 删除商品后 与购物车商品索引做对应
             let newSelectedProducts = []
             selectedProducts.forEach(item => {
@@ -148,13 +151,14 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
             const productsList = []
             selectedProducts.forEach(item => {
                 const index = cartProducts[item].index
+                const product = products[index]
                 productsList.push({
-                    key: cartProducts[item].id,
-                    image: products[index].image,
-                    amount: cartProducts[item].count,
-                    price: products[index].price,
-                    allCount: products[index].price * cartProducts[item].count,
-                    desc: products[index].desc
+                    key: cartProducts[item].id, //商品id
+                    product: {image:product.image, name: product.name}, //商品图片和名字
+                    amount: cartProducts[item].count, // 商品数量
+                    price: product.price, // 商品价格
+                    allCount: product.price * cartProducts[item].count, // 该商品总价
+                    desc: product.desc // 商品描述
                 })
             })
             //  配置订单数据
@@ -179,6 +183,8 @@ const cartReducer = (state = initState, {index, count, type, ...other}) => {
                     cartHasIndex.push(index)
                 }
             })
+            saveData('order', newHistoryOrder);
+            saveData('cart', newCartProducts);
 
             return {
                 ...state,
