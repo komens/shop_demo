@@ -37,10 +37,10 @@ export const saveData = (name, data) => {
 /*
   删除本地数据
 */
-export const removeData = (name) =>{
+export const removeData = name => {
   let storeName = getSaveName(name);
   localStorage.removeItem(storeName);
-}
+};
 
 // 得到正确的存储数据名
 function getSaveName(key) {

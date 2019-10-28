@@ -7,17 +7,17 @@ import { addProduct } from "../../store/cartStore";
 
 import "../../assets/styles/product.css";
 
-const Products = ({ products, addProduct }) => {
+const Products = ({ newProducts, addProduct }) => {
   return (
     <div className="products-wrap">
       <Row>
-        {products.map((product, index) => (
-          <Col key={product.id} sm={12} md={6} lg={4}>
+        {newProducts.map((product, index) => (
+          <Col key={product.id} xs={24} sm={12} md={6} lg={4}>
             <ProductWrap
               className="product-item"
               onClick={addProduct}
               product={product}
-              index={index}
+              index={product.index}
             />
           </Col>
         ))}
@@ -28,9 +28,18 @@ const Products = ({ products, addProduct }) => {
 
 export default connect(
   store => ({
-    products: store.cart.products
+    products: store.cart.products,
+    searchProducts: store.cart.searchProducts
   }),
   {
     addProduct
+  },
+  ({ products, searchProducts }, { addProduct }, ...self) => {
+    const newProducts = searchProducts.length > 0 ? searchProducts : products;
+    return {
+      newProducts: newProducts,
+      addProduct,
+      ...self
+    };
   }
 )(Products);
