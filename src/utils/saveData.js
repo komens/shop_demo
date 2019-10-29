@@ -9,6 +9,7 @@
 /*
   cart 为购物车的数据
   order 为订单数据
+  cartIndex 为购物车已存在商品索引
 */
 
 /*
@@ -31,7 +32,7 @@ export const getData = name => {
 */
 export const saveData = (name, data) => {
   let storeName = getSaveName(name);
-  localStorage.setItem(storeName, JSON.stringify(data));
+  storeName && localStorage.setItem(storeName, JSON.stringify(data));
 };
 
 /*
@@ -39,11 +40,15 @@ export const saveData = (name, data) => {
 */
 export const removeData = name => {
   let storeName = getSaveName(name);
-  localStorage.removeItem(storeName);
+  storeName && localStorage.removeItem(storeName);
 };
 
 // 得到正确的存储数据名
 function getSaveName(key) {
+  // 判断是否支持 localStorage
+  if(typeof(Storage) !== "function") {
+    return false;
+  }
   let storeName = null;
   switch (key) {
     case "cart":
@@ -51,6 +56,9 @@ function getSaveName(key) {
       break;
     case "order":
       storeName = "order_list";
+      break;
+    case "cartIndex":
+      storeName = "cart_index";
       break;
     default:
       return false;

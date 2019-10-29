@@ -14,7 +14,7 @@ const initState = {
 };
 
 // 标记数组，存储当前购物车商品的索引集合
-const cartHasIndex = [];
+const cartHasIndex = getData("cartIndex") || [];
 
 const ADD_PRODUCT = "ADD_PRODUCT"; // 添加商品
 const PRODUCT_COUNT_CHANGE = "PRODUCT_COUNT_CHANGE"; // 改变商品数量
@@ -99,6 +99,7 @@ const cartReducer = (state = initState, { index, count, type, ...other }) => {
         cartHasIndex.push(index); //更新标记数组
       }
       saveData("cart", newCartProducts);
+      saveData("cartIndex", cartHasIndex);
       return {
         ...state,
         cartProducts: newCartProducts,
@@ -126,6 +127,7 @@ const cartReducer = (state = initState, { index, count, type, ...other }) => {
       const newCartProducts = [...cartProducts];
       newCartProducts.splice(index, 1);
       saveData("cart", newCartProducts);
+      saveData("cartIndex", cartHasIndex);
       // 声明一个新数组用于存储 删除商品后 与购物车商品索引做对应
       let newSelectedProducts = [];
       selectedProducts.forEach(item => {
@@ -198,6 +200,7 @@ const cartReducer = (state = initState, { index, count, type, ...other }) => {
       });
       saveData("order", newHistoryOrder);
       saveData("cart", newCartProducts);
+      saveData("cartIndex", cartHasIndex);
 
       return {
         ...state,
