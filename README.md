@@ -16,5 +16,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. 浏览器访问 [http://localhost:3000](http://localhost:3000)
 
 ### 注意事项
-1. 最新分支为 `shopping分支`
+1. 最新分支为 `shopping` 分支
+
 2. 不支持IE(主要是Object.assign,你可以自己兼容)
