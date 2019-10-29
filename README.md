@@ -18,4 +18,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### 注意事项
 1. 最新分支为 `shopping` 分支
 
-2. 不支持IE(主要是Object.assign,你可以自己兼容)
+2. 不支持IE(主要是Object.assign等方法IE不支持,可以通过lodash去做兼容处理)
